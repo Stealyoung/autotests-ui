@@ -9,7 +9,7 @@ class BasePage:
     # Метод для перехода на страницу
     def visit(self, url: str):
         self.page.goto(url)
-        self.page.wait_for_timeout(10000)
+        # self.page.wait_for_timeout(10000)
         # Закомментирована строка, тк мешает выполнению теста на личной машине
 
     # Метод для перезагрузки страницы
