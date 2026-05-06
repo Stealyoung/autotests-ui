@@ -1,7 +1,10 @@
+from time import sleep
+
 import pytest
 from playwright.sync_api import Page
 
 from pages.login_page import LoginPage  # Импортируем LoginPage
+
 
 @pytest.mark.authorization
 @pytest.mark.regression
@@ -24,7 +27,7 @@ def test_wrong_email_or_password_authorization(
     )
 
     # Заполняем поле email и password
-    login_page.fill_login_form(email, password)
+    login_page.login_form.fill_login_form(email, password)
 
     # Нажимаем на кнопку Login
     login_page.click_login_button()
