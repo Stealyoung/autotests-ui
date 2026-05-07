@@ -10,18 +10,21 @@ class CreateCourseExerciseFormComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.delete_exercise_button = Button(page,
+        self.delete_exercise_button = Button(
+            page,
             "create-course-exercise-{index}-box-toolbar-delete-exercise-button",
-                                    "Delete exercise")
-        self.subtitle = Text(page,
+            "Delete exercise",
+        )
+        self.subtitle = Text(
+            page,
             "create-course-exercise-{index}-box-toolbar-subtitle-text",
-                             "Exercise subtitle"
+            "Exercise subtitle",
         )
-        self.title_input = Input(page,
-            "create-course-exercise-form-title-{index}-input", "Title"
+        self.title_input = Input(
+            page, "create-course-exercise-form-title-{index}-input", "Title"
         )
-        self.description_input = Input(page,
-            "create-course-exercise-form-description-{index}-input", "Description"
+        self.description_input = Input(
+            page, "create-course-exercise-form-description-{index}-input", "Description"
         )
 
     def click_delete_button(self, index: int):
