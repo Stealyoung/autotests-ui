@@ -16,17 +16,17 @@ class RegistrationFormComponent(BaseComponent):
             page, "registration-form-password-input", "Password"
         )
 
-    def fill_registration_form(self, email, username, password):
+    def fill(self, email, username, password):
         self.email_input.fill(email)
         self.username_input.fill(username)
         self.password_input.fill(password)
 
-    def check_visible(self, index: int, email: str, username: str, password: str):
+    def check_visible(self, email: str, username: str, password: str):
         self.email_input.check_visible()
-        self.email_input.check_have_value(email, index=index)
+        self.email_input.check_have_value(email)
 
         self.username_input.check_visible()
-        self.username_input.check_have_value(username, index=index)
+        self.username_input.check_have_value(username)
 
         self.password_input.check_visible()
-        self.password_input.check_have_value(password, index=index)
+        self.password_input.check_have_value(password)
