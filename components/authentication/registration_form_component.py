@@ -16,7 +16,7 @@ class RegistrationFormComponent(BaseComponent):
             page, "registration-form-password-input", "Password"
         )
 
-    def fill(self, email, username, password):
+    def fill_registration_form(self, email, username, password):
         self.email_input.fill(email)
         self.username_input.fill(username)
         self.password_input.fill(password)
