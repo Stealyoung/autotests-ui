@@ -1,13 +1,23 @@
 import pytest
+import allure
+from allure_commons.types import Severity
 from playwright.sync_api import Page
 
 from pages.Authentication.login_page import LoginPage  # Импортируем LoginPage
 from pages.Dashboard.dashboard_page import DashboardPage
 from pages.Authentication.registration_page import RegistrationPage
+from tools.allure.tags import AllureTag
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
 
 
 @pytest.mark.authorization
 @pytest.mark.regression
+@allure.tag(AllureTag.REGRESSION, AllureTag.AUTHORIZATION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.AUTHENTICATION)
+@allure.story(AllureStory.AUTHORIZATION)
 class TestAuthorization:
     @pytest.mark.parametrize(
         "email, password",
@@ -17,9 +27,13 @@ class TestAuthorization:
             {"  ", "password"},
         ],
     )
+    @allure.tag(AllureTag.USER_LOGIN)
+    @allure.title('User login with wrong email or password')
+    @allure.severity(Severity.CRITICAL)
     def test_wrong_email_or_password_authorization(
         self, chromium_page: Page, email: str, password: str
     ):
+        allure.dynamic.title(f'User login with wrong email or password: {email}')
         login_page = LoginPage(page=chromium_page)
 
         # Переходим на страницу входа
@@ -36,6 +50,9 @@ class TestAuthorization:
         # Проверяем, что появилось сообщение об ошибке
         login_page.check_visible_wrong_email_or_password_alert()
 
+    @allure.tag(AllureTag.USER_LOGIN)
+    @allure.title("User login with correct email and password")
+    @allure.severity(Severity.BLOCKER)
     def test_successful_authorization(
         self,
         login_page: LoginPage,
@@ -65,6 +82,9 @@ class TestAuthorization:
         dashboard_page.navbar.check_visible("username")
         dashboard_page.sidebar.check_visible()
 
+    @allure.tag(AllureTag.NAVIGATION)
+    @allure.title("Navigation from login page to registration page")
+    @allure.severity(Severity.NORMAL)
     def test_navigate_from_authorization_to_registration(
         self, login_page: LoginPage, registration_page: RegistrationPage
     ):
