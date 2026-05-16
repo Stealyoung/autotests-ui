@@ -10,7 +10,9 @@ def initialize_playwright_page(
         headless=settings.headless
     )  # Запускаем браузер
     context = browser.new_context(
-        storage_state=storage_state, record_video_dir=settings.videos_dir
+        base_url=settings.get_base_url(),
+        storage_state=storage_state,
+        record_video_dir=settings.videos_dir,
     )  # Создаем контекст вместе с сохраненным состоянием бразуера
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
