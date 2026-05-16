@@ -1,12 +1,12 @@
 import allure
 from playwright.sync_api import Page, Playwright
-from config import settings
+from config import settings, Browser
 
 
 def initialize_playwright_page(
-    playwright: Playwright, test_name: str, storage_state: str | None = None
+    playwright: Playwright, test_name: str, browser_type:Browser,  storage_state: str | None = None
 ) -> Page:
-    browser = playwright.chromium.launch(
+    browser = playwright[browser_type].launch(
         headless=settings.headless
     )  # Запускаем браузер
     context = browser.new_context(

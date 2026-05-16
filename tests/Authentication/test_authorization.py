@@ -36,10 +36,10 @@ class TestAuthorization:
     @allure.title("User login with wrong email or password")
     @allure.severity(Severity.CRITICAL)
     def test_wrong_email_or_password_authorization(
-        self, chromium_page: Page, email: str, password: str
+        self, browser_page: Page, email: str, password: str
     ):
         allure.dynamic.title(f"User login with wrong email or password: {email}")
-        login_page = LoginPage(page=chromium_page)
+        login_page = LoginPage(page=browser_page)
 
         # Переходим на страницу входа
         login_page.visit(AppRoute.LOGIN)
