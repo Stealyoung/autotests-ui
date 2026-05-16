@@ -8,11 +8,7 @@ class User(BaseModel):
     is_active: bool = True
 
 
-user_data = {
-    "id": 1,
-    "username": "john_doe",
-    "email": "john@example.com"
-}
+user_data = {"id": 1, "username": "john_doe", "email": "john@example.com"}
 
 user = User(**user_data)
 print(user)
@@ -21,7 +17,7 @@ print(user.is_active)
 invalid_user_data = {
     "id": "one",  # Здесь должна быть цифра
     "username": "john_doe",
-    "email": "john@example.com"
+    "email": "john@example.com",
 }
 
 try:

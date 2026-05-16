@@ -4,24 +4,26 @@ from pydantic import EmailStr, FilePath, HttpUrl, DirectoryPath, BaseModel
 from enum import Enum
 from typing import Self
 
+
 class Browser(str, Enum):
     WEBKIT = "webkit"
     FIREFOX = "firefox"
     CHROMIUM = "chromium"
+
 
 class TestUser(BaseModel):
     email: EmailStr
     username: str
     password: str
 
+
 class TestData(BaseModel):
-    image_file : FilePath
+    image_file: FilePath
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        env_nested_delimiter="."
+        env_file=".env", env_file_encoding="utf-8", env_nested_delimiter="."
     )
 
     app_url: HttpUrl
@@ -45,8 +47,8 @@ class Settings(BaseSettings):
 
         return Settings(
             videos_dir=videos_dir,
-            tracing_dir= tracing_dir,
-            browser_state_file= browser_state_file
+            tracing_dir=tracing_dir,
+            browser_state_file=browser_state_file,
         )
 
 

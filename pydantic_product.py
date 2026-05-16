@@ -17,10 +17,7 @@ product_data = {
     "name": "Phone",
     "price": 499.99,
     "tags": ["electronics", "smartphone"],
-    "market": {
-        "id": 1,
-        "name": "Amazon"
-    }
+    "market": {"id": 1, "name": "Amazon"},
 }
 
 product = Product(**product_data)
