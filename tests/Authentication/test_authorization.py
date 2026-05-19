@@ -24,12 +24,13 @@ from tools.routes import AppRoute
 @allure.suite(AllureFeature.AUTHENTICATION)
 @allure.sub_suite(AllureStory.AUTHORIZATION)
 class TestAuthorization:
+    @pytest.mark.xdist_group(name="authorization-group")
     @pytest.mark.parametrize(
         "email, password",
         [
-            {"user.name@gmail.com", "password"},
-            {"user.name@gmail.com", "  "},
-            {"  ", "password"},
+            ("user.name@gmail.com", "password"),
+            ("user.name@gmail.com", "  "),
+            ("  ", "password"),
         ],
     )
     @allure.tag(AllureTag.USER_LOGIN)

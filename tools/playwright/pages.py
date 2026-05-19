@@ -1,6 +1,7 @@
 import allure
 from playwright.sync_api import Page, Playwright
 from config import settings, Browser
+from tools.playwright.mocks import mock_static_resources
 
 
 def initialize_playwright_page(
@@ -16,6 +17,7 @@ def initialize_playwright_page(
     )  # Создаем контекст вместе с сохраненным состоянием бразуера
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
+    mock_static_resources(page)
 
     yield page  # Открываем новую страницу и передаем ее в тест
     context.tracing.stop(path=settings.tracing_dir.joinpath(f"{test_name}.zip"))
