@@ -11,7 +11,9 @@ from tools.routes import AppRoute
 
 @pytest.fixture(params=settings.browsers)
 def browser_page(request: SubRequest, playwright: Playwright) -> Page:
-    yield from initialize_playwright_page(playwright, test_name=request.node.name, browser_type=request.param)
+    yield from initialize_playwright_page(
+        playwright, test_name=request.node.name, browser_type=request.param
+    )
 
 
 @pytest.fixture(scope="session")
@@ -41,5 +43,5 @@ def browser_page_with_state(
         playwright,
         test_name=request.node.name,
         browser_type=request.param,
-        storage_state=settings.browser_state_file
+        storage_state=settings.browser_state_file,
     )

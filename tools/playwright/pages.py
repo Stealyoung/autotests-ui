@@ -5,7 +5,10 @@ from tools.playwright.mocks import mock_static_resources
 
 
 def initialize_playwright_page(
-    playwright: Playwright, test_name: str, browser_type:Browser,  storage_state: str | None = None
+    playwright: Playwright,
+    test_name: str,
+    browser_type: Browser,
+    storage_state: str | None = None,
 ) -> Page:
     browser = playwright[browser_type].launch(
         headless=settings.headless

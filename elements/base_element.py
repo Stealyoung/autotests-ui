@@ -36,7 +36,7 @@ class BaseElement:
             locator.click()
 
     def check_visible(self, nth: int = 0, **kwargs):
-        step  = f"Checking {self.type_of} '{self.name}' is visible"
+        step = f"Checking {self.type_of} '{self.name}' is visible"
         with allure.step(step):
             locator = self.get_locator(nth, **kwargs)
             logger.info(step)
