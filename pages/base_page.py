@@ -3,6 +3,10 @@ from re import Pattern
 import allure
 from playwright.sync_api import Page, expect  # Импортируем класс Page
 
+from tools.playwright.logger import get_logger
+
+logger = get_logger("BASE_PAGE")
+
 
 class BasePage:
     # Конструктор класса, принимающий объект Page
@@ -11,16 +15,22 @@ class BasePage:
 
     # Метод для перехода на страницу
     def visit(self, url: str):
-        with allure.step(f"Opening the url '{url}'"):
+        step = f"Opening the url '{url}'"
+        with allure.step(step):
+            logger.info(step)
             self.page.goto(url)
             # self.page.wait_for_timeout(10000)
             # Закомментирована строка, тк мешает выполнению теста на личной машине
 
     # Метод для перезагрузки страницы
     def reload(self):
-        with allure.step(f"Reloading page with url '{self.page.url}'"):
+        step = f"Reloading page with url '{self.page.url}'"
+        with allure.step(step):
+            logger.info(step)
             self.page.reload(wait_until="domcontentloaded")
 
     def check_current_url(self, expected_url: Pattern[str]):
-        with allure.step(f"Checking current url matches with '{expected_url.pattern}'"):
+        step = f"Checking current url matches with '{expected_url.pattern}'"
+        with allure.step(step):
+            logger.info(step)
             expect(self.page).to_have_url(expected_url)
