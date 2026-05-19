@@ -21,7 +21,7 @@ class BaseElement:
     ) -> Locator:  # объект Locator для взаимодействия с элементом
         # Инициализирует объект локатора, подставляя динамические значения в локатор.
         locator = self.locator.format(**kwargs)
-        step = f"Getting locator wuth 'data-testid={locator}' at index '{nth}'"
+        step = f"Getting locator with 'data-testid={locator}' at index '{nth}'"
         # Возвращаем объект локатора
         with allure.step(step):
             logger.info(step)
