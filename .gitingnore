@@ -1,3 +1,17 @@
-__pycache__/
+# pycharm
+.idea
+
+# python
+.venv
+__pycache__
 *.pyc
-.env
+
+# allure
+allure-results
+allure-report
+
+# testing artifacts
+*.html
+*.json
+videos
+tracing
