@@ -1,8 +1,10 @@
 from playwright.sync_api import sync_playwright, expect
 
+from config import settings
+
 with sync_playwright() as playwright:
     # Открываем браузер и создаем новую страницу
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=settings.headless)
     page = browser.new_page()
 
     # Переходим на страницу входа
