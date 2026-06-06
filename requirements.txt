@@ -8,3 +8,4 @@ pytest==9.0.3
 pytest-playwright==0.8.0
 pytest-xdist==3.8.0
 ruff==0.15.15
+ui-coverage-tool==0.33.0
